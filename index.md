@@ -7,10 +7,7 @@ permalink: /
 ---
 
 # Zoe's Blog
-{: .fs-9 }
-
 The blog is used to record notes from books read, topic studied.
-{: .fs-6 .fw-300 }
 
 ---
 
