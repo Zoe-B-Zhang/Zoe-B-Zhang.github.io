@@ -12,12 +12,48 @@ permalink: /
 The blog is used to record notes from books read, topic studied.
 {: .fs-6 .fw-300 }
 
-
 ---
 
-## Getting started
+## Markeddown 
+- [x] this is a complete item
+- [ ] this is an incomplete item
 
-### Dependencies
+### ML study path
+- [ ] General and overview on data science
+  - **Target** : 
+    - clear on related concepts, terms in the area.  
+    - know the scope of problems that ML can handle 
+    - know methods other than ML can handle:
+      - like data analyzes the tools, methods etc. 
+  - **Items**:
+    - online articles (list valueable here)  
+    - Courses:
+      - [ ] ML by Ng on coursera 
+    - Books: 
+      - [ ] ML by ZZH
+      - [ ] ML yearning - tech strategy for AI engineer by Ng
+      - [ ] Terms table 
+      
+- [ ] Math
+  - **Target** : Review math knowledge
+  - **Items**:
+    - Books: 
+      - [ ] 统计学习方法 
+- [ ] DL basic
+  - **Target** : 
+    - DL algorithms: what kinds of problems each algo is suitable for solving? 
+    - focus on two topics: 
+      - style transfer 
+      - obj rec
+  - **Items**:
+    - Courses:
+      - [x] DL by Ng on coursera
+      - [ ] MIT Intro on DL 
+    - Books: 
+      - [ ]         
+      
+## Blogs 
+### Test 
 
 Just the Docs is built for [Jekyll](https://jekyllrb.com), a static site generator. View the [quick start guide](https://jekyllrb.com/docs/) for more information. Just the Docs requires no special Jekyll plugins and can run on GitHub Pages' standard Jekyll compiler.
 
