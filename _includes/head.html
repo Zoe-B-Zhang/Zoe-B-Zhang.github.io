@@ -1,17 +1,132 @@
-<header>
+<!-- 多语言导航系统 -->
+<header class="site-header">
+  <!-- 品牌LOGO -->
+  <div class="brand">
+    <a href="/{{ page.lang }}/">
+      {% if page.lang == 'zh' %}
+        创意宇宙
+      {% else %}
+        Creative Universe
+      {% endif %}
+    </a>
+  </div>
+  
+  <!-- 导航菜单 -->
   <nav>
     <ul>
-      <!-- 动态生成导航 -->
       {% for item in site.header_pages[page.lang] %}
+        {% assign page_url = page.url | replace: '.html', '' %}
+        {% assign item_url = item.url | replace: '.html', '' %}
         <li>
-          <a href="{{ item | replace: '.md', '.html' }}">{{ site.translations[item].title }}</a>
+          <a href="{{ item.url }}" 
+             {% if page_url == item_url %}class="active"{% endif %}>
+            {{ item.title }}
+          </a>
         </li>
       {% endfor %}
     </ul>
   </nav>
   
+  <!-- 语言指示器 -->
   <div class="lang-indicator">
-    {% if page.lang == 'zh' %}中文{% else %}English{% endif %}
+    {% if page.lang == 'zh' %}
+      <span>中文</span>
+      <button onclick="switchLanguage('en')">EN</button>
+    {% else %}
+      <span>English</span>
+      <button onclick="switchLanguage('zh')">中文</button>
+    {% endif %}
   </div>
 </header>
-</head>
+
+<style>
+/* ======= 导航栏样式 ======= */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand a {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  font-family: 'Brush Script MT', cursive;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  padding: 5px 0;
+  position: relative;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #de2910;
+}
+
+nav a.active {
+  color: #de2910;
+  font-weight: bold;
+}
+
+nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #de2910;
+  animation: underline 0.3s ease;
+}
+
+@keyframes underline {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* 语言指示器 */
+.lang-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang-indicator span {
+  color: #777;
+  font-size: 14px;
+}
+
+.lang-indicator button {
+  background: transparent;
+  border: 1px solid #ddd;
+  padding: 4px 12px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 13px;
+}
+
+.lang-indicator button:hover {
+  background: #f8f8f8;
+  border-color: #999;
+}
+</style>
