@@ -5,112 +5,22 @@ nav_order: 1
 description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
 permalink: /
 ---
-
-# Zoe's Blog
-The blog is used to record notes from books read, topic studied.
-
----
-
-## Markeddown 
-- [x] this is a complete item
-- [ ] this is an incomplete item
-
-### ML study path
-- [ ] General and overview on data science
-  - **Target** : 
-    - clear on related concepts, terms in the area.  
-    - know the scope of problems that ML can handle 
-    - know methods other than ML can handle:
-      - like data analyzes the tools, methods etc. 
-  - **Items**:
-    - online articles (list valueable here)  
-    - Courses:
-      - [ ] ML by Ng on coursera 
-    - Books: 
-      - [ ] ML by ZZH
-      - [ ] ML yearning - tech strategy for AI engineer by Ng
-      - [ ] Terms table 
-      
-- [ ] Math
-  - **Target** : Review math knowledge
-  - **Items**:
-    - Books: 
-      - [ ] 统计学习方法 
-- [ ] DL basic
-  - **Target** : 
-    - DL algorithms: what kinds of problems each algo is suitable for solving? 
-    - focus on two topics: 
-      - style transfer 
-      - obj rec
-  - **Items**:
-    - Courses:
-      - [x] DL by Ng on coursera
-      - [ ] MIT Intro on DL 
-    - Books: 
-      - [ ]         
-      
-## Blogs 
-### Test 
-
-Just the Docs is built for [Jekyll](https://jekyllrb.com), a static site generator. View the [quick start guide](https://jekyllrb.com/docs/) for more information. Just the Docs requires no special Jekyll plugins and can run on GitHub Pages' standard Jekyll compiler.
-
-### Quick start: Use as a GitHub Pages remote theme
-
-1. Add Just the Docs to your Jekyll site's `_config.yml` as a [remote theme](https://blog.github.com/2017-11-29-use-any-theme-with-github-pages/)
-```yaml
-remote_theme: pmarsceill/just-the-docs
-```
-<small>You must have GitHub Pages enabled on your repo, one or more Markdown files, and a `_config.yml` file. [See an example repository](https://github.com/pmarsceill/jtd-remote)</small>
-
-### Local installation: Use the gem-based theme
-
-1. Install the Ruby Gem
-```bash
-$ gem install just-the-docs
-```
-```yaml
-# .. or add it to your your Jekyll site’s Gemfile
-gem "just-the-docs"
-```
-2. Add Just the Docs to your Jekyll site’s `_config.yml`
-```yaml
-theme: "just-the-docs"
-```
-3. _Optional:_ Initialize search data (creates `search-data.json`)
-```bash
-$ bundle exec just-the-docs rake search:init
-```
-3. Run you local Jekyll server
-```bash
-$ jekyll serve
-```
-```bash
-# .. or if you're using a Gemfile (bundler)
-$ bundle exec jekyll serve
-```
-4. Point your web browser to [http://localhost:4000](http://localhost:4000)
-
-### Configure Just the Docs
-
-- [See configuration options]({{ site.baseurl }}{% link docs/configuration.md %})
-
----
-
-## About the project
-
-Just the Docs is &copy; 2017-2019 by [Patrick Marsceill](http://patrickmarsceill.com).
-
-### License
-
-Just the Docs is distributed by an [MIT license](https://github.com/pmarsceill/just-the-docs/tree/master/LICENSE.txt).
-
-### Contributing
-
-When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change. Read more about becoming a contributor in [our GitHub repo](https://github.com/pmarsceill/just-the-docs#contributing).
-
-### Code of Conduct
-
-Just the Docs is committed to fostering a welcoming community.
-
-[View our Code of Conduct](https://github.com/pmarsceill/just-the-docs/tree/master/CODE_OF_CONDUCT.md) on our GitHub repository.
+<div class="language-selector">
+  <!-- 中文版入口 -->
+  <a href="/zh" class="lang-card zh-card">
+    <div class="flag-container">
+      <img src="/assets/flags/china.svg" alt="中文" width="80">
+    </div>
+    <h2>中文版</h2>
+    <p>浏览中文内容作品集</p>
+  </a>
+  
+  <!-- 英文版入口 -->
+  <a href="/en" class="lang-card en-card">
+    <div class="flag-container">
+      <img src="/assets/flags/uk.svg" alt="English" width="80">
+    </div>
+    <h2>English Version</h2>
+    <p>View portfolio in English</p>
+  </a>
+</div>
