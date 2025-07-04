@@ -13,39 +13,30 @@
 # you will see them accessed via {{ site.title }}, {{ site.github_repo }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-# ========================
-# 基础站点配置
-# ========================
 title: "Bei's Creative World | Bei的创意世界 (building...)"
-description: "Illustration Portfolio & Tech Lab | 插画作品集与技术实验室"
-baseurl: ""  # 必须为空！因为站点托管在根域名(username.github.io)
-url: "https://zoe-b-zhang.github.io"  # 替换为你的实际地址
+description: "Illustration Portfolio & Tech Lab "
+baseurl: ""  
+url: "https://zoe-b-zhang.github.io"  
 
-# ========================
-# 多语言系统配置
-# ========================
 languages: ["en", "zh"]  # 支持的语言代码
-default_lang: "zh"       # 默认语言
+default_lang: "en"       # 默认语言
 
-# 文本翻译字典 (在模板中用 site.translations.键名.语言 调用)
+# 
 translations:
-  # 插画部分标题/描述 (关联到 gallery.md)
   gallery_title:
-    en: "🎨 Illustration Gallery"
-    zh: "🎨 插画作品集"
+    en: "Illustration Gallery"
+    zh: "插画作品集"
   gallery_desc:
     en: "Handmade & Digital Artworks"
     zh: "手绘与数字创作精选"
-  
-  # 技术项目标题/描述 (关联到 projects.md)
   projects_title:
     en: "💻 Tech Projects"
     zh: "💻 技术项目"
   projects_desc:
     en: "Art-Tech Experiments"
-    zh: "艺术科技实验"
+    zh: "科技实验"
   
-  # 导航菜单文本
+  # 
   home_text:
     en: "Home"
     zh: "首页"
@@ -53,12 +44,8 @@ translations:
     en: "Contact"
     zh: "联系"
 
-# ========================
-# 文件结构关联配置
-# ========================
-# 导航菜单配置 (自动关联到文件结构)
 header_pages:
-  # 英文导航 (关联到 en/ 目录下的文件)
+  # 
   en:
     - url: "/en/"        # 关联 en/index.md
       title: "{{ site.translations.home_text.en }}"
@@ -67,7 +54,7 @@ header_pages:
     - url: "/en/projects" # 关联 en/projects.md
       title: "{{ site.translations.projects_title.en }}"
   
-  # 中文导航 (关联到 zh/ 目录下的文件)
+  # 
   zh:
     - url: "/zh/"
       title: "{{ site.translations.home_text.zh }}"
@@ -76,11 +63,8 @@ header_pages:
     - url: "/zh/projects"
       title: "{{ site.translations.projects_title.zh }}"
 
-# ========================
-# 永久链接与路径配置
-# ========================
-permalink: pretty  # 生成美观的URL格式: /zh/gallery/
-exclude:  # 排除不需要处理的文件/目录
+permalink: pretty  #
+exclude:  #
   - "node_modules/"
   - "*.gemspec"
   - "*.gem"
@@ -103,21 +87,9 @@ search_enabled: true
 search_placeholder: 
   en: "Search artworks..."
   zh: "搜索作品..."
-
-# 右上角附加链接 (保持原配置)
-aux_links:
-  "Just the Docs on GitHub":
-    - "//github.com/pmarsceill/just-the-docs"
-
-# 颜色方案 (nil=默认, dark=深色模式)
+  
 color_scheme: nil
 
-# Google Analytics (替换为你的跟踪ID)
-ga_tracking: UA-XXXXX-Y 
-
-# ========================
-# Jekyll 主题与插件
-# ========================
 theme: minima  # GitHub Pages 支持的主题
 
 plugins:
@@ -125,10 +97,6 @@ plugins:
   - jekyll-seo-tag     # SEO优化
   - jekyll-sitemap     # 站点地图
 
-# ========================
-# 自定义变量
-# ========================
-# 社交媒体链接
 social_links:
   behance: ""
   instagram: ""
