@@ -12,8 +12,8 @@ permalink: /en/  # Match header_pages in _config
   <section class="gallery-section">
     <a href="/en/gallery" class="card-link">
       <div class="card-content">
-        <h2>{{ site.translations.gallery_title.en }}</h2>
-        <p>{{ site.translations.gallery_desc.en }}</p>
+        <h2>Illustration Gallery</h2>
+        <p>Handmade & Digital Artworks</p>
         <div class="preview-grid">
           <img src="/assets/previews/art1-thumb.jpg" alt="Art Preview 1">
         </div>
@@ -26,8 +26,8 @@ permalink: /en/  # Match header_pages in _config
   <section class="tech-section">
     <a href="/en/projects" class="card-link">
       <div class="card-content">
-        <h2>{{ site.translations.projects_title.en }}</h2>
-        <p>{{ site.translations.projects_desc.en }}</p>
+        <h2>💻 Tech Projects</h2>
+        <p>Art-Tech Experiments</p>
         <div class="tech-tags">
         </div>
       </div>

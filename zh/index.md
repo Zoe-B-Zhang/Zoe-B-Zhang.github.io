@@ -1,19 +1,19 @@
 ---
-layout: home  # 使用主页布局
+layout: home
 title: 欢迎来到创意世界
 lang: zh
-permalink: /zh/  # 匹配_config中的header_pages配置
+permalink: /zh/
 ---
 
-{% include header.html %}  <!-- 包含导航栏组件 -->
+{% include header.html %}
 
 <main class="home-container">
   <!-- 插画作品集区域 -->
   <section class="gallery-section">
     <a href="/zh/gallery" class="card-link">
       <div class="card-content">
-        <h2>{{ site.translations.gallery_title.zh }}</h2>
-        <p>{{ site.translations.gallery_desc.zh }}</p>
+        <h2>插画作品集</h2>
+        <p>手绘与数字创作精选</p>
         <div class="preview-grid">
           <img src="/assets/previews/art1-thumb.jpg" alt="插画预览1">
         </div>
@@ -26,8 +26,8 @@ permalink: /zh/  # 匹配_config中的header_pages配置
   <section class="tech-section">
     <a href="/zh/projects" class="card-link">
       <div class="card-content">
-        <h2>{{ site.translations.projects_title.zh }}</h2>
-        <p>{{ site.translations.projects_desc.zh }}</p>
+        <h2>💻 技术项目</h2>
+        <p>科技实验</p>
         <div class="tech-tags">
           <span>Three.js</span>
           <span>AI生成</span>
@@ -47,12 +47,12 @@ permalink: /zh/  # 匹配_config中的header_pages配置
 
 <!-- 语言切换按钮 -->
 <div class="lang-switcher-container">
-  <button onclick="switchLanguage('en')" class="lang-switcher">
+  <a href="/en/" class="lang-switcher">
     English Version
-  </button>
+  </a>
 </div>
 
-{% include footer.html %}  <!-- 包含页脚组件 -->
+{% include footer.html %}
 
 <!-- 引入JS -->
 <script src="/assets/js/main.js"></script>

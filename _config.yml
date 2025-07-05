@@ -45,23 +45,18 @@ translations:
     zh: "联系"
 
 header_pages:
-  # 
   en:
-    - url: "/en/"        # 关联 en/index.md
-      title: "{{ site.translations.home_text.en }}"
-    - url: "/en/gallery" # 关联 en/gallery.md
-      title: "{{ site.translations.gallery_title.en }}"
-    - url: "/en/projects" # 关联 en/projects.md
-      title: "{{ site.translations.projects_title.en }}"
+    - url: "/en/"
+      title: "Home"  
+    - url: "/en/gallery"
+      title: "Illustration Gallery"
   
-  # 
   zh:
     - url: "/zh/"
-      title: "{{ site.translations.home_text.zh }}"
+      title: "首页"
     - url: "/zh/gallery"
-      title: "{{ site.translations.gallery_title.zh }}"
-    - url: "/zh/projects"
-      title: "{{ site.translations.projects_title.zh }}"
+      title: "插画作品集"
+
 
 permalink: pretty  #
 exclude:  #
