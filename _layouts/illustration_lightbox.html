@@ -1,0 +1,27 @@
+---
+# Layout for illustration pages with a lightbox/thumbnail gallery
+# Main image centered, thumbnails below
+# No captions, just images
+---
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body>
+  {% include header.html %}
+  <main class="content" aria-label="Content">
+    <div class="container illustration-lightbox">
+      <h1 class="illustration-title">{{ page.title }}</h1>
+      <div class="lightbox-main">
+        <img id="main-image" src="{{ page.images[0].url | relative_url }}" alt="{{ page.title }}">
+      </div>
+      <div class="lightbox-thumbnails">
+        {% for item in page.images %}
+          <img class="thumbnail" src="{{ item.url | relative_url }}" alt="{{ page.title }} thumbnail" onclick="document.getElementById('main-image').src='{{ item.url | relative_url }}'">
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+  {% include footer.html %}
+  {% include javascripts.html %}
+</body>
+</html>

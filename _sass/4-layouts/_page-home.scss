@@ -1,0 +1,80 @@
+.lates-title {
+  position: relative;
+  margin-bottom: 80px;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: normal;
+  text-align: center;
+  &:after,
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+    height: 1px;
+    background: $light-gray;
+  }
+
+  &:after {
+    width: calc(50% - 90px);
+    left: 0;
+  }
+
+  &:before {
+    width: calc(50% - 90px);
+    right: 0;
+  }
+
+  @media only screen and (max-width: $tablet) {
+    margin-bottom: 40px;
+    &:after,
+    &:before {
+      width: calc(50% - 70px);
+    }
+  }
+}
+
+// Home page: Section for latest Illustration and Tech Project posts
+.home-section {
+  margin-bottom: 60px;
+}
+
+.home-section__title {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 32px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.home-section__posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+@media only screen and (max-width: $tablet) {
+  .home-section__posts {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+// Illustration and Tech Project list page layout
+.category-list-section {
+  margin: 60px auto;
+  max-width: 900px;
+}
+
+.category-list-title {
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

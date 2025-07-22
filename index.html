@@ -1,0 +1,68 @@
+---
+layout: default
+---
+{% include hero.html %}
+
+<div class="container">
+  <!-- Illustration Section -->
+  <section class="home-section">
+    <h2 class="home-section__title">Latest Illustrations</h2>
+    
+    <!-- Projects -->
+    <h3 style="font-size: 22px; margin-top: 40px; margin-bottom: 20px;">Projects</h3>
+    <div class="home-section__posts">
+      {% assign latest_project = site.posts | where_exp:'p','p.categories contains "projects"' | sort: 'date' | reverse | first %}
+      {% if latest_project %}
+        {% include article-content.html post=latest_project %}
+      {% else %}
+        <p>No posts in this category yet.</p>
+      {% endif %}
+    </div>
+
+    <!-- Personal Works -->
+    <h3 style="font-size: 22px; margin-top: 40px; margin-bottom: 20px;">Personal Works</h3>
+    <div class="home-section__posts">
+      {% assign latest_personal = site.posts | where_exp:'p','p.categories contains "personal-works"' | sort: 'date' | reverse | first %}
+      {% if latest_personal %}
+        {% include article-content.html post=latest_personal %}
+      {% else %}
+        <p>No posts in this category yet.</p>
+      {% endif %}
+    </div>
+
+    <!-- Sketch & Process Work -->
+    <h3 style="font-size: 22px; margin-top: 40px; margin-bottom: 20px;">Sketch & Process Work</h3>
+    <div class="home-section__posts">
+      {% assign latest_sketch = site.posts | where_exp:'p','p.categories contains "sketch-process"' | sort: 'date' | reverse | first %}
+      {% if latest_sketch %}
+        {% include article-content.html post=latest_sketch %}
+      {% else %}
+        <p>No posts in this category yet.</p>
+      {% endif %}
+    </div>
+
+    <!-- Miscellaneous -->
+    <h3 style="font-size: 22px; margin-top: 40px; margin-bottom: 20px;">Miscellaneous</h3>
+    <div class="home-section__posts">
+      {% assign latest_misc = site.posts | where_exp:'p','p.categories contains "miscellaneous"' | sort: 'date' | reverse | first %}
+      {% if latest_misc %}
+        {% include article-content.html post=latest_misc %}
+      {% else %}
+        <p>No posts in this category yet.</p>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- Tech Project 最新文章 -->
+  <section class="home-section">
+    <h2 class="home-section__title">Latest Tech Project</h2>
+    <div class="home-section__posts">
+      {% assign latest_tech_post = site.posts | where_exp: "post", "post.categories contains 'tech-project'" | sort: 'date' | reverse | first %}
+      {% if latest_tech_post %}
+        {% include article-content.html post=latest_tech_post %}
+      {% else %}
+        <p>No tech projects posted yet.</p>
+      {% endif %}
+    </div>
+  </section>
+</div>
