@@ -16,8 +16,6 @@ image: 08.jpg
       {% if latest_project %}
         <div style="margin-bottom:10px;">最新：<a href="{{ latest_project.url | relative_url }}">{{ latest_project.title }}</a></div>
       {% endif %}
-      <div style="font-size:14px;">
-      </div>
       <ul style="margin-top:10px; font-size:15px;">
         <li><a href="/2025/07/11/projects-gallery.html">Projects Gallery Demo</a></li>
         <li><a href="/2025/07/11/projects-lightbox-pb-2025-6-1.html">postcard for picture book, "the tree of last year"</a></li>
@@ -32,8 +30,6 @@ image: 08.jpg
       {% if latest_personal %}
         <div style="margin-bottom:10px;">最新：<a href="{{ latest_personal.url | relative_url }}">{{ latest_personal.title }}</a></div>
       {% endif %}
-      <div style="font-size:14px;">
-      </div>
       <ul style="margin-top:10px; font-size:15px;">
         <li><a href="/2025/07/11/personal-gallery.html">Personal Works Gallery temp</a></li>
         <li><a href="/2025/07/11/personal-lightbox.html">Personal Works Lightbox temp</a></li>
@@ -47,8 +43,6 @@ image: 08.jpg
       {% if latest_sketch %}
         <div style="margin-bottom:10px;">最新：<a href="{{ latest_sketch.url | relative_url }}">{{ latest_sketch.title }}</a></div>
       {% endif %}
-      <div style="font-size:14px;">
-      </div>
       <ul style="margin-top:10px; font-size:15px;">
         <li><a href="/2025/07/11/sketch-gallery.html">Sketch & Process Gallery temp</a></li>
         <li><a href="/2025/07/11/sketch-lightbox-22122305.html">sketchbook of 2022-12~2023-05</a></li>
@@ -62,8 +56,6 @@ image: 08.jpg
       {% if latest_misc %}
         <div style="margin-bottom:10px;">最新：<a href="{{ latest_misc.url | relative_url }}">{{ latest_misc.title }}</a></div>
       {% endif %}
-      <div style="font-size:14px;">
-      </div>
       <ul style="margin-top:10px; font-size:15px;">
         <li><a href="/2025/07/11/misc-gallery.html">Miscellaneous Gallery under build</a></li>
         <li><a href="/2025/07/11/misc-lightbox.html">Miscellaneous Lightbox temp</a></li>
