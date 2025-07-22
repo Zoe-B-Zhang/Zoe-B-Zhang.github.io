@@ -17,16 +17,11 @@ image: 08.jpg
         <div style="margin-bottom:10px;">最新：<a href="{{ latest_project.url | relative_url }}">{{ latest_project.title }}</a></div>
       {% endif %}
       <div style="font-size:14px;">
-        {% assign gallery_demo = site.posts | where_exp:'p', 'p.url contains "projects-gallery"' | first %}
-        {% assign lightbox_demo = site.posts | where_exp:'p', 'p.url contains "projects-lightbox"' | first %}
-        <a href="{{ gallery_demo.url | relative_url }}">Gallery Demo</a> |
-        <a href="{{ lightbox_demo.url | relative_url }}">Lightbox Demo</a>
       </div>
       <ul style="margin-top:10px; font-size:15px;">
-        {% assign posts = site.posts | where_exp:'p','p.categories contains "projects"' | sort: 'date' | reverse %}
-        {% for post in posts %}
-          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-        {% endfor %}
+        <li><a href="/2025/07/11/projects-gallery.html">Projects Gallery Demo</a></li>
+        <li><a href="/2025/07/11/projects-lightbox-pb-2025-6-1.html">postcard for picture book, "the tree of last year"</a></li>
+        <li><a href="/2025/07/11/projects-lightbox-pb-2025-6-2.html">postcard for picture book, "one year in China Academy of Art"</a></li>
       </ul>
     </div>
     <!-- Personal Works -->
@@ -38,16 +33,10 @@ image: 08.jpg
         <div style="margin-bottom:10px;">最新：<a href="{{ latest_personal.url | relative_url }}">{{ latest_personal.title }}</a></div>
       {% endif %}
       <div style="font-size:14px;">
-        {% assign gallery_demo = site.posts | where_exp:'p', 'p.url contains "personal-gallery"' | first %}
-        {% assign lightbox_demo = site.posts | where_exp:'p', 'p.url contains "personal-lightbox"' | first %}
-        <a href="{{ gallery_demo.url | relative_url }}">Gallery Demo</a> |
-        <a href="{{ lightbox_demo.url | relative_url }}">Lightbox Demo</a>
       </div>
       <ul style="margin-top:10px; font-size:15px;">
-        {% assign posts = site.posts | where_exp:'p','p.categories contains "personal-works"' | sort: 'date' | reverse %}
-        {% for post in posts %}
-          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-        {% endfor %}
+        <li><a href="/2025/07/11/personal-gallery.html">Personal Works Gallery temp</a></li>
+        <li><a href="/2025/07/11/personal-lightbox.html">Personal Works Lightbox temp</a></li>
       </ul>
     </div>
     <!-- Sketch & Process Work -->
@@ -59,16 +48,10 @@ image: 08.jpg
         <div style="margin-bottom:10px;">最新：<a href="{{ latest_sketch.url | relative_url }}">{{ latest_sketch.title }}</a></div>
       {% endif %}
       <div style="font-size:14px;">
-        {% assign gallery_demo = site.posts | where_exp:'p', 'p.url contains "sketch-gallery"' | first %}
-        {% assign lightbox_demo = site.posts | where_exp:'p', 'p.url contains "sketch-lightbox"' | first %}
-        <a href="{{ gallery_demo.url | relative_url }}">Gallery Demo</a> |
-        <a href="{{ lightbox_demo.url | relative_url }}">Lightbox Demo</a>
       </div>
       <ul style="margin-top:10px; font-size:15px;">
-        {% assign posts = site.posts | where_exp:'p','p.categories contains "sketch-process"' | sort: 'date' | reverse %}
-        {% for post in posts %}
-          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-        {% endfor %}
+        <li><a href="/2025/07/11/sketch-gallery.html">Sketch & Process Gallery temp</a></li>
+        <li><a href="/2025/07/11/sketch-lightbox-22122305.html">sketchbook of 2022-12~2023-05</a></li>
       </ul>
     </div>
     <!-- Miscellaneous -->
@@ -80,16 +63,10 @@ image: 08.jpg
         <div style="margin-bottom:10px;">最新：<a href="{{ latest_misc.url | relative_url }}">{{ latest_misc.title }}</a></div>
       {% endif %}
       <div style="font-size:14px;">
-        {% assign gallery_demo = site.posts | where_exp:'p', 'p.url contains "misc-gallery"' | first %}
-        {% assign lightbox_demo = site.posts | where_exp:'p', 'p.url contains "misc-lightbox"' | first %}
-        <a href="{{ gallery_demo.url | relative_url }}">Gallery Demo</a> |
-        <a href="{{ lightbox_demo.url | relative_url }}">Lightbox Demo</a>
       </div>
       <ul style="margin-top:10px; font-size:15px;">
-        {% assign posts = site.posts | where_exp:'p','p.categories contains "miscellaneous"' | sort: 'date' | reverse %}
-        {% for post in posts %}
-          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-        {% endfor %}
+        <li><a href="/2025/07/11/misc-gallery.html">Miscellaneous Gallery under build</a></li>
+        <li><a href="/2025/07/11/misc-lightbox.html">Miscellaneous Lightbox temp</a></li>
       </ul>
     </div>
   </div>
