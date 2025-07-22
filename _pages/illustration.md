@@ -22,6 +22,12 @@ image: 08.jpg
         <a href="{{ gallery_demo.url | relative_url }}">Gallery Demo</a> |
         <a href="{{ lightbox_demo.url | relative_url }}">Lightbox Demo</a>
       </div>
+      <ul style="margin-top:10px; font-size:15px;">
+        {% assign posts = site.posts | where_exp:'p','p.categories contains "projects"' | sort: 'date' | reverse %}
+        {% for post in posts %}
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
     </div>
     <!-- Personal Works -->
     <div style="flex:1 1 300px; min-width:260px; max-width:350px; border:1px solid #eee; border-radius:8px; padding:20px;">
@@ -37,6 +43,12 @@ image: 08.jpg
         <a href="{{ gallery_demo.url | relative_url }}">Gallery Demo</a> |
         <a href="{{ lightbox_demo.url | relative_url }}">Lightbox Demo</a>
       </div>
+      <ul style="margin-top:10px; font-size:15px;">
+        {% assign posts = site.posts | where_exp:'p','p.categories contains "personal-works"' | sort: 'date' | reverse %}
+        {% for post in posts %}
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
     </div>
     <!-- Sketch & Process Work -->
     <div style="flex:1 1 300px; min-width:260px; max-width:350px; border:1px solid #eee; border-radius:8px; padding:20px;">
@@ -52,6 +64,12 @@ image: 08.jpg
         <a href="{{ gallery_demo.url | relative_url }}">Gallery Demo</a> |
         <a href="{{ lightbox_demo.url | relative_url }}">Lightbox Demo</a>
       </div>
+      <ul style="margin-top:10px; font-size:15px;">
+        {% assign posts = site.posts | where_exp:'p','p.categories contains "sketch-process"' | sort: 'date' | reverse %}
+        {% for post in posts %}
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
     </div>
     <!-- Miscellaneous -->
     <div style="flex:1 1 300px; min-width:260px; max-width:350px; border:1px solid #eee; border-radius:8px; padding:20px;">
@@ -67,6 +85,12 @@ image: 08.jpg
         <a href="{{ gallery_demo.url | relative_url }}">Gallery Demo</a> |
         <a href="{{ lightbox_demo.url | relative_url }}">Lightbox Demo</a>
       </div>
+      <ul style="margin-top:10px; font-size:15px;">
+        {% assign posts = site.posts | where_exp:'p','p.categories contains "miscellaneous"' | sort: 'date' | reverse %}
+        {% for post in posts %}
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
     </div>
   </div>
 </section>
