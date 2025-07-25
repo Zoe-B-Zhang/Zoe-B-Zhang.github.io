@@ -2,7 +2,6 @@
 layout: page
 title: "Tech Projects"
 permalink: /tech-project/
-image: 08.jpg
 ---
 
 <section class="category-list-section">

@@ -10,14 +10,14 @@ description: Bei's creative space
 author: 
   name: Zoe 
   image: head.jpg
-  say-hello: Hello, I’m <strong>Bei</strong>
+  say-hello: Hello, I’m <strong>Bei, Zhang</strong>
   bio: <strong>SW Engineer</strong>, <strong>Illustrator</strong>.
 
 
 #-------------------------------
 # Contact links
-instagram: https://instagram.com/ # Add your Instagram handle
-pinterest: https://pinterest.com/ # Add your Pinterest handle
+instagram: https://www.instagram.com/Bei.Zhang # Add your Instagram handle
+#pinterest: https://pinterest.com/ # Add your Pinterest handle
 
 
 #-------------------------------
