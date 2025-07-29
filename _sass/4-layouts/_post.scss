@@ -76,6 +76,10 @@
   }
 }
 
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
 .post {
   margin: 80px auto;
 
@@ -231,4 +235,23 @@
   @media only screen and (max-width: $mobile) {
     margin-bottom: 40px;
   }
+}
+
+.thumbnail-scroll-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.thumbnail-list {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.thumbnail {
+  height: 100px; /* Or any size you want for the thumbnail */
+  object-fit: cover;
+  cursor: pointer;
 }

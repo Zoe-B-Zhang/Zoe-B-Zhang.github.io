@@ -14,10 +14,12 @@
       <div class="lightbox-main">
         <img id="main-image" src="{{ page.images[0].url | relative_url }}" alt="{{ page.title }}">
       </div>
-      <div class="lightbox-thumbnails">
-        {% for item in page.images %}
-          <img class="thumbnail" src="{{ item.url | relative_url }}" alt="{{ page.title }} thumbnail" onclick="document.getElementById('main-image').src='{{ item.url | relative_url }}'">
-        {% endfor %}
+      <div class="thumbnail-scroll-container">
+        <div class="lightbox-thumbnails">
+          {% for item in page.images %}
+            <img class="thumbnail" src="{{ item.url | relative_url }}" alt="{{ page.title }} thumbnail" onclick="document.getElementById('main-image').src='{{ item.url | relative_url }}'">
+          {% endfor %}
+        </div>
       </div>
     </div>
   </main>

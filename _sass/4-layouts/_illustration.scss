@@ -60,6 +60,14 @@
       transition: box-shadow 0.2s;
     }
   }
+
+  .thumbnail-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px 0;
+    margin-bottom: 20px;
+  }
+
   .lightbox-thumbnails {
     display: flex;
     justify-content: center;
@@ -77,6 +85,7 @@
         opacity: 1;
         border: 2px solid $brand-color;
       }
+      flex-shrink: 0;
     }
   }
 } 
