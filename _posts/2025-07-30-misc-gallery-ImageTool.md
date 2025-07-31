@@ -1,11 +1,11 @@
 ---
-layout: post
+layout: page
 title: "A simple image Tool"
 categories: [illustration, miscellaneous]
 date: 2025-07-30
 description: "a image tool to handling images in batch"
 ---
-
+<img src="/images/misc/ImageTool-GUI.jpg" class="centered-image" alt="Tool Screenshot">
 This is a simple image tool to resize pictures and optionally add a watermark.
 I created it while building my personal website — to make large scanned images smaller for faster loading, and to protect content with visible watermarks.
 

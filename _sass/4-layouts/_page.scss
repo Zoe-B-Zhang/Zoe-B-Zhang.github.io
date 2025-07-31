@@ -41,7 +41,11 @@
   img {
     margin: 30px 0;
   }
-
+  .centered-image {
+    display: block;
+    margin: 1em auto;
+    max-width: 100%;
+  }
   @media only screen and (max-width: $tablet) {
     margin: 40px auto;
   }
@@ -49,7 +53,7 @@
 
 .page-box {
   text-align: center;
-
+  
   .back-arrow {
     a {
       display: inline-block;

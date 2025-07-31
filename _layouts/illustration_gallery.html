@@ -17,7 +17,6 @@ title: Illustration Gallery Layout
         {% for item in page.images %}
           <div class="gallery-item">
             <img src="{{ item.url | relative_url }}" alt="{{ item.caption | default: page.title }}">
-            <div class="overlay-watermark">© Bei.Zhang</div>
             {% if item.caption %}
               <div class="gallery-caption">{{ item.caption }}</div>
             {% endif %}
