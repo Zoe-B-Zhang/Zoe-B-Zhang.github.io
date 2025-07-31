@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Tech Project: A simple image Tool"
+title: "A simple image Tool"
+categories: [illustration, miscellaneous]
 date: 2025-07-30
-categories: [tech-project]
 description: "a image tool to handling images in batch"
 ---
 
