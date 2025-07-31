@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tech Project: A simple image Tool"
-date: 2025-07-12 10:00:00 +0800
+date: 2025-07-30
 categories: [tech-project]
 description: "a image tool to handling images in batch"
 ---
