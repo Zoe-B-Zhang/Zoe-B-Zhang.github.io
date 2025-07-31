@@ -12,7 +12,10 @@
     <div class="container illustration-lightbox">
       <h1 class="illustration-title">{{ page.title }}</h1>
       <div class="lightbox-main">
-        <img id="main-image" src="{{ page.images[0].url | relative_url }}" alt="{{ page.title }}">
+        <div class="main-image-wrapper">
+          <img id="main-image" src="{{ page.images[0].url | relative_url }}" alt="{{ page.title }}">
+          <div class="overlay-watermark">© Bei.Zhang</div>
+        </div>
       </div>
       <div class="thumbnail-scroll-container">
         <div class="lightbox-thumbnails">
@@ -23,6 +26,35 @@
       </div>
     </div>
   </main>
+  <div class="container">
+    <div class="post__navigation">
+      {% assign posts_in_category = site.posts | where_exp: "post", "post.categories contains page.categories[0]" %}
+      {% assign prev_post = nil %}
+      {% assign next_post = nil %}
+  
+      {% for post in posts_in_category %}
+      {% if post.url == page.url %}
+        {% if posts_in_category.size > 1 and forloop.index0 > 0 %}
+          {% assign prev_post = posts_in_category[forloop.index0 | minus: 1] %}
+        {% endif %}
+    
+        {% if posts_in_category.size > 1 and forloop.index0 < posts_in_category.size | minus: 1 %}
+          {% assign next_post = posts_in_category[forloop.index0 | plus: 1] %}
+        {% endif %}
+      {% endif %}
+      {% endfor %}
+  
+      <div class="post-nav">
+        {% if prev_post %}
+          <a class="prev-link" href="{{ prev_post.url }}">← {{ prev_post.title }}</a>
+        {% endif %}
+  
+        {% if next_post %}
+          <a class="next-link" href="{{ next_post.url }}">{{ next_post.title }} →</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
   {% include footer.html %}
   {% include javascripts.html %}
 </body>

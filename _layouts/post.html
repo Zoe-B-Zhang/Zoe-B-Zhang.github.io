@@ -52,13 +52,6 @@ layout: default
 
       <div class="post__share">
         <span class="share__title">Share this article:</span>
-        <ul class="share__list list-reset">
-          <li class="share__item">
-            <a class="share__facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}"
-              onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
-              title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
-          </li>
-
           <li class="share__item">
             <a class="share__twitter" href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ site.url }}{{ site.baseurl }}{{ page.url }}"
               onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
@@ -84,41 +77,30 @@ layout: default
 
   <div class="container">
   <div class="post__navigation">
-    {% if page.previous.url %}
-    <div class="prev">
-      <a class="post__nav__image" href="{{ site.baseurl }}{{page.previous.url}}" style="background-image: url({{site.baseurl}}/images/{{page.previous.image}})"></a>
-      <h2 class="post__nav__title">
-        <i class="ion ion-md-arrow-back"></i>
-        <a href="{{ site.baseurl }}{{page.previous.url}}">{{page.previous.title}}</a>
-      </h2>
-      <p class="prev__excerpt">
-        {% if page.previous.description %}
-          {{ page.previous.description }}
-        {% else %}
-          {{ page.previous.content | strip_html | truncate: 110 }}
-        {% endif %}
-      </p>
-    </div>
-    {% endif %}
+    {% assign posts_in_category = site.posts | where_exp: "post", "post.categories contains page.categories[0]" %}
+    {% assign prev_post = nil %}
+    {% assign next_post = nil %}
 
-    {% if page.next.url %}
-    <div class="next">
-      <a class="post__nav__image" href="{{ site.baseurl }}{{page.next.url}}" style="background-image: url({{site.baseurl}}/images/{{page.next.image}})">
-      </a>
-      <h2 class="post__nav__title">
-        <a href="{{ site.baseurl }}{{page.next.url}}">{{page.next.title}}</a>
-        <i class="ion ion-md-arrow-forward"></i>
-      </h2>
-      <p class="next__excerpt">
-        {% if page.next.description %}
-          {{ page.next.description }}
-        {% else %}
-          {{ page.next.content | strip_html | truncate: 110 }}
-        {% endif %}
-      </p>
-    </div>
+    {% for post in posts_in_category %}
+    {% if post.url == page.url %}
+      {% if posts_in_category.size > 1 and forloop.index0 > 0 %}
+        {% assign prev_post = posts_in_category[forloop.index0 | minus: 1] %}
+      {% endif %}
+  
+      {% if posts_in_category.size > 1 and forloop.index0 < posts_in_category.size | minus: 1 %}
+        {% assign next_post = posts_in_category[forloop.index0 | plus: 1] %}
+      {% endif %}
     {% endif %}
+    {% endfor %}
+
+    <div class="post-nav">
+      {% if prev_post %}
+        <a class="prev-link" href="{{ prev_post.url }}">← {{ prev_post.title }}</a>
+      {% endif %}
+
+      {% if next_post %}
+        <a class="next-link" href="{{ next_post.url }}">{{ next_post.title }} →</a>
+      {% endif %}
+    </div>
   </div>
-
-  {% if site.data.settings.disqus-identifier %} {% include disqus-comments.html %} {% endif %}
   </div>
