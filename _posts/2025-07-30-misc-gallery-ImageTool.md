@@ -14,4 +14,3 @@ Of course, CSS can also overlay a watermark visually without altering the image 
 It's open source, so feel free to modify it for your own needs.
 https://github.com/Zoe-B-Zhang/misc.git
 
-I'm just lazy 😄
