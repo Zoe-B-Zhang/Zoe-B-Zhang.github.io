@@ -64,3 +64,7 @@ description: "一个功能强大的网页版色彩分析工具"
   - 三色组：色相构成等边三角形
 
 ---
+
+source code :src="/tools/ColorAnalyzer.html" 
+
+---
