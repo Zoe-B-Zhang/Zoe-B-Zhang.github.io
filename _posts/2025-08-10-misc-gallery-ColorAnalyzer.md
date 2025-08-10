@@ -65,6 +65,6 @@ description: "一个功能强大的网页版色彩分析工具"
 
 ---
 
-source code :src="/tools/ColorAnalyzer.html" 
+source code :src="/tools/ColorAnalyzer.html" or https://github.com/Zoe-B-Zhang/misc/tree/main/2_colorAnalyzer
 
 ---
