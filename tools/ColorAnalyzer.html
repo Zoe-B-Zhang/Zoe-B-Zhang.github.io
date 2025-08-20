@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Painting Colour Analyzer</title>
+	<title>绘画色彩分析器 - 集成与对比</title>
 	<style>
 		:root{--gray-50:#f8fafc;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-400:#9ca3af;--gray-500:#6b7280;--gray-600:#4b5563;--gray-700:#374151;--gray-800:#1f2937;--gray-900:#111827;--blue-50:#eff6ff;--blue-100:#dbeafe;--blue-600:#2563eb;--blue-700:#1d4ed8;--green-600:#16a34a;--green-700:#15803d;--white:#ffffff;--shadow-sm:0 1px 2px rgba(0,0,0,0.08);--shadow-lg:0 10px 15px rgba(0,0,0,0.10), 0 4px 6px rgba(0,0,0,0.06);}
 		*,*::before,*::after{box-sizing:border-box;}
@@ -127,7 +127,7 @@
 <body class="bg-gray-100 text-gray-800">
 	<div class="container mx-auto p-4">
 		<header class="text-center mb-8">
-			<h1 class="text-3xl font-bold">绘画色彩分析器</h1>
+			<h1 class="text-3xl font-bold">绘画色彩分析器（集成与算法对比）</h1>
 			<p class="mt-2 text-gray-600">整合色彩分析与黑白灰关系，提供全面、可对比的画面分析报告。对主色明确、风格统一的图像，需要大的色彩关系，推荐kmeans算法。对色彩丰富、细节复杂的图像，需要发现色彩的多样性，推荐中位切分。省事用比较模式</p>
 			<p class="mt-2 text-gray-600">🌐 Translate with your browser 2025-8-15</p>
 		</header>
@@ -283,7 +283,8 @@
 
 				setTimeout(async () => {
 					const originalImage = document.querySelector(`img[data-image-index='${imageIndex}']`);
-					await applyMonochromaticTone(originalImage, targetColor);
+					await applyMonochromaticToneEnhanced(originalImage, targetColor);
+					//applyMonochromaticTonePreserveDetail(originalImage, targetColor);
 					modalLoader.style.display = 'none';
 					modalCanvas.style.display = 'block';
 				}, 50);
@@ -727,7 +728,7 @@
             if(suggestions.length === 0) {
                 suggestions.push({ icon: '🎉', text: '各项指标均衡，黑白灰关系处理得当！' });
             }
-			return suggestions;
+			return [];
 		}
 
         function renderBWAnalysis(result, index) {
@@ -850,6 +851,73 @@
 				const [nr,ng,nb] = hsvToRgb(targetHsv.h, targetHsv.s, oHsv.v);
 				data[i]=nr; data[i+1]=ng; data[i+2]=nb;
 			}
+			modalCanvas.width = tempCanvas.width;
+			modalCanvas.height = tempCanvas.height;
+			const modalCtx = modalCanvas.getContext('2d');
+			modalCtx.putImageData(imageData, 0, 0);
+		}
+		async function applyMonochromaticToneEnhanced(originalImage, targetColor, toneStrength = 0.8, saturationStrength = 0.2) {
+			const tempCanvas = document.createElement('canvas');
+			const tempCtx = tempCanvas.getContext('2d', { willReadFrequently: true });
+			tempCanvas.width = originalImage.naturalWidth;
+			tempCanvas.height = originalImage.naturalHeight;
+			tempCtx.drawImage(originalImage, 0, 0);
+			const imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+			const data = imageData.data;
+
+			const targetHsv = rgbToHsv(...targetColor.rgb);
+
+			for (let i = 0; i < data.length; i += 4) {
+				const r = data[i], g = data[i + 1], b = data[i + 2];
+				const oHsv = rgbToHsv(r, g, b);
+
+				// 增加饱和度调整，增强目标色的影响
+				const adjustedSaturation = Math.min(1, oHsv.s * (1 + saturationStrength)); // 通过饱和度强度调整
+
+				// 替换色相，保留原饱和度和亮度，适当增强目标色的影响
+				const [nr, ng, nb] = hsvToRgb(targetHsv.h, adjustedSaturation, oHsv.v);
+
+				// 结合目标色和原色（通过色调混合），toneStrength决定混合比例
+				data[i] = nr * toneStrength + r * (1 - toneStrength);
+				data[i + 1] = ng * toneStrength + g * (1 - toneStrength);
+				data[i + 2] = nb * toneStrength + b * (1 - toneStrength);
+
+				// 保留透明度
+				data[i + 3] = data[i + 3];
+			}
+
+			modalCanvas.width = tempCanvas.width;
+			modalCanvas.height = tempCanvas.height;
+			const modalCtx = modalCanvas.getContext('2d');
+			modalCtx.putImageData(imageData, 0, 0);
+		}
+
+		async function applyMonochromaticTonePreserveDetail(originalImage, targetColor, toneStrength = 0.3) {
+			const tempCanvas = document.createElement('canvas');
+			const tempCtx = tempCanvas.getContext('2d', { willReadFrequently: true });
+			tempCanvas.width = originalImage.naturalWidth;
+			tempCanvas.height = originalImage.naturalHeight;
+			tempCtx.drawImage(originalImage, 0, 0);
+			const imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+			const data = imageData.data;
+
+			const targetHsv = rgbToHsv(...targetColor.rgb);
+
+			for (let i = 0; i < data.length; i += 4) {
+				const r = data[i], g = data[i+1], b = data[i+2];
+				const oHsv = rgbToHsv(r, g, b);
+
+				// 替换色相，保留原饱和度和亮度
+				const [nr, ng, nb] = hsvToRgb(targetHsv.h, oHsv.s, oHsv.v);
+
+				// 混合新色和原色
+				data[i]   = nr * toneStrength + r * (1 - toneStrength);
+				data[i+1] = ng * toneStrength + g * (1 - toneStrength);
+				data[i+2] = nb * toneStrength + b * (1 - toneStrength);
+				// 保留透明度
+				data[i+3] = data[i+3];
+			}
+
 			modalCanvas.width = tempCanvas.width;
 			modalCanvas.height = tempCanvas.height;
 			const modalCtx = modalCanvas.getContext('2d');
@@ -1135,4 +1203,17 @@
 		function labelOf(cat){ return {red:'红',orange:'橙',yellow:'黄',green:'绿',blue:'蓝',violet:'紫'}[cat] || cat; }
 	</script>
 </body>
+<footer style="text-align: center; font-size: 0.9em; margin-top: 2em;">
+	<p>
+	  © 2025 Bei Zhang 本网页遵循
+	  <a href="https://choosealicense.com/licenses/mit/" target="_blank">MIT 开源许可</a>。
+	  源码托管于 <a href="https://github.com/Zoe-B-Zhang/misc/tree/main/2_colorAnalyzer" target="_blank">GitHub</a>。
+	</p>
+	<p>
+		本项目遵循 
+		<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">
+		  CC BY-NC 4.0 非商业性许可协议
+		</a>。版权所有 © 2025 Bei Zhang
+	  </p>
+</footer>
 </html>

@@ -8,8 +8,7 @@ description: "一个功能强大的网页版色彩分析工具"
 
 ## 🎨 在线使用工具
 
-<iframe src="https://github.com/Zoe-B-Zhang/misc/tree/main/2_colorAnalyzer" width="100%" height="800px" style="border: 1px solid #ccc; border-radius: 8px;"></iframe>
-
+<iframe src="/tools/ColorAnalyzer.html" width="100%" height="800px" style="border: 1px solid #ccc; border-radius: 8px;"></iframe>
 ---
 
 ## 🎨 绘画色彩分析器简介
