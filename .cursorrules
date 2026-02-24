@@ -1,0 +1,73 @@
+# Zoe-B-Zhang.github.io — Split Screen Homepage
+
+## Project Context
+- Jekyll site on GitHub Pages
+- Author: Zhang Bei — SW Engineer & Illustrator
+- Key pages: Home, Illustration, Tech Project, About
+
+## Split Screen Design Spec
+
+### Layout
+- **首屏 50/50 分屏**（水平分割，左右各占 viewport 50%）
+- 左半屏：插画作品区（Illustration）
+- 右半屏：ML/Tech 项目矩阵（Tech Project）
+- 全屏高度，无首屏滚动；分屏交界线清晰
+
+### Left Panel — Illustration
+- 展示最新插画作品：从 categories 含 `projects` / `personal-works` / `sketch-process` / `miscellaneous` 的 post 中取有 `image` 的
+- 布局：流动轮播或网格，以图为主
+- 配色：偏暖/艺术感，与右侧形成对比
+- **交互**：鼠标悬停左侧时：
+  - 背景微变色（如淡色叠加）
+  - 或插画图片轻微浮现/高亮
+
+### Right Panel — Tech Project
+- 展示 tech-project 的 post 列表（矩阵式，标题 + 简短描述）
+- 布局：网格或列表，简洁硬核
+- 配色：偏冷/科技感，与左侧形成对比
+- **交互**：鼠标悬停右侧时：
+  - 背景显示半透明代码片段或公式
+  - 使用 CSS 伪元素或 `::before`/`::after` + `opacity` 实现
+
+### Technical Constraints
+- 保持 Jekyll/Liquid 结构，不改变 `_config.yml`、`_data` 逻辑
+- 使用现有 `site.posts`、`post.categories`、`post.image`、`post.title`、`post.description`
+- 样式写在 `_sass/`，不内联大量 CSS
+- 响应式：平板及以下可改为上下堆叠（上插画、下 Tech）
+
+### 细节美化规范
+- **间距控制**：各部分标题与内容之间保持统一的 margin-bottom（如 32px / mb-8）
+- **卡片设计**：技术项目卡片背景纯白，边框 `#f0f0f0`，圆角 8px，无深阴影
+- **色彩点缀**：除核心作品外，全站以灰黑白为主；仅在交互处（如 Hover）使用极简强调色
+
+### 图像缩放与完整性规范
+- **完整显示优先**：所有插画必须完整呈现，严禁裁剪。使用 `object-fit: contain`（或 `background-size: contain`）
+- **固定画框制**：容器必须有统一的 `aspect-ratio`（推荐 1/1 或 4/5）和 `bg-muted/10`（或 `#f9f9f9`），确保不同比例的图片在同一个尺寸的「画框」内居中
+- **防止过大**：插画容器应设置 `max-height: 60vh`，防止长图在网页上占据过多垂直空间
+
+### 动态内容平衡规则
+- **最小高度对齐**：左右 Panel 共享 `min-h-screen`，背景色撑满全屏，避免断层
+- **垂直对齐**：内容少时（如 Tech 侧），内容靠上、`pt-24` 留白，禁止强制撑开间距
+- **插画网格**：`grid-cols-1 md:grid-cols-2` 自适应；图片容器使用 `aspect-square` 或 `aspect-[3/4]`，保证网格整齐
+- **色彩动态**：非核心文字使用 `hsl(var(--muted))` 或 SASS `$muted`，聚焦作品；技术卡片使用 `bg-background` 配合超细 border
+
+### 网页设计增强规范：画廊式分屏与动态平衡
+
+#### 图像与网格 (Image & Grid System)
+- **标准化容器**：所有插画必须包裹在固定比例容器中（推荐 `aspect-[4/5]` 或 `aspect-square`）
+- **完整显示**：使用 `object-fit: contain` / `background-size: contain`，图片在画框内居中，横图上下留白、竖图左右留白
+- **画框背景**：容器添加极浅背景（`#f9f9f9` 或 `bg-muted/10`）、微圆角、超细边框（`border: 0.5px solid rgba(0,0,0,0.05)`）
+- **网格密度**：左侧插画区在 MD 屏以上强制使用 `grid-cols-2`；即使组内只有一个 Item，也必须保持单列宽度，严禁拉伸至全屏
+
+#### 动态分组与滚动 (Dynamic Grouping & Sticky Logic)
+- **分组吸顶**：每个内容组的标题必须使用 `sticky top-0` 结合 `backdrop-blur`，确保滚动时结构清晰
+- **右侧吸附**：Tech Panel 使用 `sticky top-24`、`align-self: flex-start`；当左侧插画长于右侧时，右侧内容悬浮在视野内，不随滚动消失
+- **视觉呼吸**：组与组之间保持 `mb-16` 到 `mb-24` 的大间距，可利用 `border-t` 进行微弱分割
+
+#### 字体层级 (Typography)
+- **Art 侧**：标题使用 Serif 字体，副标题使用大写、宽字间距的 Sans
+- **Tech 侧**：标题使用 Monospace 字体，展现专业与严谨
+
+### Reference
+- Build in Amsterdam 分屏风格：强烈对比、大胆留白、清晰分区
+- 身份 duality：插画 vs 技术，通过视觉对比传达

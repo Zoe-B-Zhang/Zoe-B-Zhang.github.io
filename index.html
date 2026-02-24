@@ -1,68 +1,83 @@
 ---
 layout: default
 ---
-{% include hero.html %}
-
-<div class="container">
-  <!-- Illustration Section -->
-  <section class="home-section">
-    <h2 class="home-section__title">Latest Illustrations</h2>
-    
-    <!-- Projects -->
-    <h3 style="font-size: 22px; margin-top: 40px; margin-bottom: 20px;">Projects</h3>
-    <div class="home-section__posts">
-      {% assign latest_project = site.posts | where_exp:'p','p.categories contains "projects"' | sort: 'date' | reverse | first %}
-      {% if latest_project %}
-        {% include article-content.html post=latest_project %}
-      {% else %}
-        <p>No posts in this category yet.</p>
+<div class="split-intro">
+  <p class="split-intro__text">{{ site.data.settings.author.name }} · {{ site.data.settings.author.bio | strip_html }}</p>
+</div>
+<div class="split-screen">
+  <div class="split-left split-left--illustration">
+    <div class="split-left__header">
+      <h2 class="split-left__heading">Illustration</h2>
+    </div>
+    <div class="split-left__grid-wrap">
+      {% assign ill_cats = "projects,personal-works,sketch-process,miscellaneous" | split: "," %}
+      {% assign ill_count = 0 %}
+      {% for cat in ill_cats %}
+        {% assign cat_posts = site.posts | where_exp:'p','p.categories contains cat' | sort: 'date' | reverse %}
+        {% assign cat_with_img = 0 %}
+        {% for p in cat_posts %}
+          {% if p.image or p.images and p.images.size > 0 %}
+            {% assign cat_with_img = cat_with_img | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+        {% if cat_with_img > 0 %}
+          {% assign ill_count = ill_count | plus: 1 %}
+          {% if cat == "projects" %}{% assign cat_label = "Projects" %}
+          {% elsif cat == "personal-works" %}{% assign cat_label = "Personal Works" %}
+          {% elsif cat == "sketch-process" %}{% assign cat_label = "Sketch & Process Work" %}
+          {% elsif cat == "miscellaneous" %}{% assign cat_label = "Miscellaneous" %}
+          {% endif %}
+          <div class="split-left__category">
+            <h3 class="split-left__category-name">{{ cat_label }}</h3>
+            <div class="split-left__category-row">
+              {% for post in cat_posts %}
+                {% if post.image or post.images and post.images.size > 0 %}
+                  <a href="{{ post.url | relative_url }}" class="split-left__card">
+                    {% if post.image %}
+                    <div class="split-left__thumb" style="background-image: url({{ site.baseurl }}/images/{{ post.image }})"></div>
+                    {% else %}
+                    <div class="split-left__thumb" style="background-image: url({{ post.images[0].url | relative_url }})"></div>
+                    {% endif %}
+                    <span class="split-left__title">{{ post.title }}</span>
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+      {% if ill_count == 0 %}
+      <p class="split-left__empty">暂无插画作品</p>
       {% endif %}
     </div>
-
-    <!-- Personal Works -->
-    <h3 style="font-size: 22px; margin-top: 40px; margin-bottom: 20px;">Personal Works</h3>
-    <div class="home-section__posts">
-      {% assign latest_personal = site.posts | where_exp:'p','p.categories contains "personal-works"' | sort: 'date' | reverse | first %}
-      {% if latest_personal %}
-        {% include article-content.html post=latest_personal %}
-      {% else %}
-        <p>No posts in this category yet.</p>
+    <div class="split-left__footer">
+      <a href="{{ site.baseurl }}/illustration/" class="split-left__link">View all</a>
+    </div>
+  </div>
+  <div class="split-right split-right--tech">
+    <div class="split-right__header">
+      <h2 class="split-right__heading">Tech Project</h2>
+    </div>
+    <div class="split-right__list-wrap">
+      <div class="split-right__list">
+      {% assign tech_posts = site.posts | where_exp:'p','p.categories contains "tech-project"' | sort: 'date' | reverse %}
+      {% assign tech_count = 0 %}
+      {% for post in tech_posts %}
+        {% assign tech_count = tech_count | plus: 1 %}
+        <a href="{{ post.url | relative_url }}" class="split-right__card">
+          <h3 class="split-right__title">{{ post.title }}</h3>
+          {% if post.description %}
+          <p class="split-right__desc">{{ post.description | strip_html | truncate: 100 }}</p>
+          {% endif %}
+        </a>
+      {% endfor %}
+      </div>
+      {% if tech_count == 0 %}
+      <p class="split-right__empty">暂无技术项目</p>
       {% endif %}
     </div>
-
-    <!-- Sketch & Process Work -->
-    <h3 style="font-size: 22px; margin-top: 40px; margin-bottom: 20px;">Sketch & Process Work</h3>
-    <div class="home-section__posts">
-      {% assign latest_sketch = site.posts | where_exp:'p','p.categories contains "sketch-process"' | sort: 'date' | reverse | first %}
-      {% if latest_sketch %}
-        {% include article-content.html post=latest_sketch %}
-      {% else %}
-        <p>No posts in this category yet.</p>
-      {% endif %}
+    <div class="split-right__footer">
+      <a href="{{ site.baseurl }}/tech-project/" class="split-right__link">View all</a>
     </div>
-
-    <!-- Miscellaneous -->
-    <h3 style="font-size: 22px; margin-top: 40px; margin-bottom: 20px;">Miscellaneous</h3>
-    <div class="home-section__posts">
-      {% assign latest_misc = site.posts | where_exp:'p','p.categories contains "miscellaneous"' | sort: 'date' | reverse | first %}
-      {% if latest_misc %}
-        {% include article-content.html post=latest_misc %}
-      {% else %}
-        <p>No posts in this category yet.</p>
-      {% endif %}
-    </div>
-  </section>
-
-  <!-- Tech Project 最新文章 -->
-  <section class="home-section">
-    <h2 class="home-section__title">Latest Tech Project</h2>
-    <div class="home-section__posts">
-      {% assign latest_tech_post = site.posts | where_exp: "post", "post.categories contains 'tech-project'" | sort: 'date' | reverse | first %}
-      {% if latest_tech_post %}
-        {% include article-content.html post=latest_tech_post %}
-      {% else %}
-        <p>No tech projects posted yet.</p>
-      {% endif %}
-    </div>
-  </section>
+  </div>
 </div>

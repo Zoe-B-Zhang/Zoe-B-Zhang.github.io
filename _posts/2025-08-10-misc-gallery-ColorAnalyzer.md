@@ -4,6 +4,7 @@ title: "Picture Color Analyzer"
 categories: [illustration, miscellaneous]
 date: 2025-08-10
 description: "一个功能强大的网页版色彩分析工具"
+image: misc/colorAnalyzer.jpg
 ---
 
 ## 🎨 在线使用工具

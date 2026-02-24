@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  --muted: 220 9% 65%;
+  --background: 0 0% 100%;
+}
+
 body {
   font-family: $base-font-family;
   font-size: $base-font-size;

@@ -5,72 +5,88 @@ permalink: /illustration/
 ---
 
 <section class="category-list-section">
-  <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;">
+  <div class="illustration-category-grid">
     <!-- Projects -->
-    <div style="flex:1 1 300px; min-width:260px; max-width:350px; border:1px solid #eee; border-radius:8px; padding:20px;">
-      <h2>Projects</h2>
-      <div style="margin-bottom:10px; color:#888; font-size:15px;">Graduate projects, official</div>
+    <div class="illustration-category-card">
       {% assign posts = site.posts | where_exp:'p','p.categories contains "projects"' | sort: 'date' | reverse %}
-      <ul style="margin-top:10px; font-size:15px;">
+      {% assign thumb_post = nil %}
+      {% for p in posts %}
+        {% if p.image or p.images and p.images.size > 0 %}
+          {% assign thumb_post = p %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% if thumb_post %}
+        <a href="{{ thumb_post.url | relative_url }}" class="illustration-category__thumb" style="background-image: url({% if thumb_post.image %}{{ site.baseurl }}/images/{{ thumb_post.image }}{% else %}{{ thumb_post.images[0].url | relative_url }}{% endif %})"></a>
+      {% endif %}
+      <h2>Projects</h2>
+      <div class="illustration-category__desc">Graduate projects, official</div>
+      <ul class="illustration-category__list">
         {% for post in posts %}
-          <li>
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            {% if post.images and post.images.size > 0 and post.images[0].url %}
-              {% assign first_image = post.images[0].url %}
-              <img src="{{ first_image }}" style="width:100%; max-height:160px; object-fit: cover; display: block; border-radius: 4px; margin-bottom: 6px;">
-            {% endif %}
-          </li>
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
         {% endfor %}
       </ul>
-      </div>
+    </div>
     <!-- Personal Works -->
-    <div style="flex:1 1 300px; min-width:260px; max-width:350px; border:1px solid #eee; border-radius:8px; padding:20px;">
-      <h2>Personal Works</h2>
-      <div style="margin-bottom:10px; color:#888; font-size:15px;">Create a series of illustrations based on a personal project or theme that excites you.</div>
+    <div class="illustration-category-card">
       {% assign posts = site.posts | where_exp:'p','p.categories contains "personal-works"' | sort: 'date' | reverse %}
-      <ul style="margin-top:10px; font-size:15px;">
+      {% assign thumb_post = nil %}
+      {% for p in posts %}
+        {% if p.image or p.images and p.images.size > 0 %}
+          {% assign thumb_post = p %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% if thumb_post %}
+        <a href="{{ thumb_post.url | relative_url }}" class="illustration-category__thumb" style="background-image: url({% if thumb_post.image %}{{ site.baseurl }}/images/{{ thumb_post.image }}{% else %}{{ thumb_post.images[0].url | relative_url }}{% endif %})"></a>
+      {% endif %}
+      <h2>Personal Works</h2>
+      <div class="illustration-category__desc">Create a series of illustrations based on a personal project or theme.</div>
+      <ul class="illustration-category__list">
         {% for post in posts %}
-          <li>
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            {% if post.images and post.images.size > 0 and post.images[0].url %}
-              {% assign first_image = post.images[0].url %}
-              <img src="{{ first_image }}" style="width:100%; max-height:160px; object-fit: cover; display: block; border-radius: 4px; margin-bottom: 6px;">
-            {% endif %}
-          </li>
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
         {% endfor %}
       </ul>
     </div>
     <!-- Sketch & Process Work -->
-    <div style="flex:1 1 300px; min-width:260px; max-width:350px; border:1px solid #eee; border-radius:8px; padding:20px;">
-      <h2>Sketch & Process Work</h2>
-      <div style="margin-bottom:10px; color:#888; font-size:15px;">Showcase your sketchbook, rough drafts, and works-in-progress.</div>
+    <div class="illustration-category-card">
       {% assign posts = site.posts | where_exp:'p','p.categories contains "sketch-process"' | sort: 'date' | reverse %}
-      <ul style="margin-top:10px; font-size:15px;">
+      {% assign thumb_post = nil %}
+      {% for p in posts %}
+        {% if p.image or p.images and p.images.size > 0 %}
+          {% assign thumb_post = p %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% if thumb_post %}
+        <a href="{{ thumb_post.url | relative_url }}" class="illustration-category__thumb" style="background-image: url({% if thumb_post.image %}{{ site.baseurl }}/images/{{ thumb_post.image }}{% else %}{{ thumb_post.images[0].url | relative_url }}{% endif %})"></a>
+      {% endif %}
+      <h2>Sketch & Process Work</h2>
+      <div class="illustration-category__desc">Sketchbook, rough drafts, and works-in-progress.</div>
+      <ul class="illustration-category__list">
         {% for post in posts %}
-          <li>
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            {% if post.images and post.images.size > 0 and post.images[0].url %}
-              {% assign first_image = post.images[0].url %}
-              <img src="{{ first_image }}" style="width:100%; max-height:160px; object-fit: cover; display: block; border-radius: 4px; margin-bottom: 6px;">
-            {% endif %}
-          </li>
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
         {% endfor %}
       </ul>
     </div>
     <!-- Miscellaneous -->
-    <div style="flex:1 1 300px; min-width:260px; max-width:350px; border:1px solid #eee; border-radius:8px; padding:20px;">
-      <h2>Miscellaneous</h2>
-      <div style="margin-bottom:10px; color:#888; font-size:15px;">Other works and experiments.</div>
+    <div class="illustration-category-card">
       {% assign posts = site.posts | where_exp:'p','p.categories contains "miscellaneous"' | sort: 'date' | reverse %}
-      <ul style="margin-top:10px; font-size:15px;">
+      {% assign thumb_post = nil %}
+      {% for p in posts %}
+        {% if p.image or p.images and p.images.size > 0 %}
+          {% assign thumb_post = p %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% if thumb_post %}
+        <a href="{{ thumb_post.url | relative_url }}" class="illustration-category__thumb" style="background-image: url({% if thumb_post.image %}{{ site.baseurl }}/images/{{ thumb_post.image }}{% else %}{{ thumb_post.images[0].url | relative_url }}{% endif %})"></a>
+      {% endif %}
+      <h2>Miscellaneous</h2>
+      <div class="illustration-category__desc">Other works and experiments.</div>
+      <ul class="illustration-category__list">
         {% for post in posts %}
-          <li>
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            {% if post.images and post.images.size > 0 and post.images[0].url %}
-              {% assign first_image = post.images[0].url %}
-              <img src="{{ first_image }}" style="width:100%; max-height:160px; object-fit: cover; display: block; border-radius: 4px; margin-bottom: 6px;">
-            {% endif %}
-          </li>
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
         {% endfor %}
       </ul>
     </div>

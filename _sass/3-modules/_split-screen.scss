@@ -1,0 +1,327 @@
+// ============================================
+// Split Screen — 画廊式分屏 · 分组吸顶 · 动态平衡
+// 左：Art 艺术感 | 右：Tech 硬核 Monospace
+// ============================================
+
+$split-muted: $muted;
+$split-bg-left: #F9F8F6;
+$split-bg-right: #FFFFFF;
+$split-border: $border-subtle;
+$split-top-sticky: 6rem; // top-24, 为 header 留空
+
+// Intro above split
+.split-intro {
+  padding: 20px 40px 0;
+  text-align: center;
+}
+
+.split-intro__text {
+  margin: 0;
+  font-size: $base-font-size;
+  color: $split-muted;
+  letter-spacing: 0.5px;
+}
+
+@media only screen and (max-width: $tablet) {
+  .split-intro {
+    padding: 16px 20px 0;
+  }
+}
+
+// Split Screen — 双栏，左可滚动撑高，右 sticky 悬浮
+.split-screen {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  align-items: flex-start;
+
+  .split-left,
+  .split-right {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+  }
+
+  .split-left {
+    background: $split-bg-left;
+    color: $dark;
+    transition: background $global-transition;
+
+    &:hover {
+      background: #F5F4F1;
+    }
+  }
+
+  .split-right {
+    background: $split-bg-right;
+    color: $dark;
+    position: relative;
+    overflow: hidden;
+    align-self: flex-start;
+    position: sticky;
+    top: $split-top-sticky;
+
+    &::before {
+      content: "def model():\A  return x ** 2\A\Aimport torch\Aoptimizer.step()";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      padding: 32px;
+      font-family: 'Monaco', 'Consolas', 'SF Mono', monospace;
+      font-size: 11px;
+      line-height: 1.6;
+      white-space: pre;
+      opacity: 0;
+      color: $dark;
+      pointer-events: none;
+      transition: opacity $global-transition;
+    }
+
+    &:hover::before {
+      opacity: 0.06;
+    }
+  }
+
+  @media only screen and (max-width: $mobile) {
+    flex-direction: column;
+    min-height: 0;
+
+    .split-left,
+    .split-right {
+      flex: 1 1 auto;
+      padding: 20px;
+    }
+
+    .split-right {
+      position: relative;
+      top: auto;
+      border-top: 1px solid $split-border;
+    }
+  }
+}
+
+// Left header — Serif 主标题
+.split-left__header,
+.split-right__header {
+  margin-bottom: 32px;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.split-left__header,
+.split-right__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.split-left__heading {
+  font-family: 'Lora', Georgia, serif;
+  font-size: $font-size-h2;
+  font-weight: 600;
+  margin: 0;
+  color: $heading-font-color;
+}
+
+.split-right__heading {
+  font-family: 'Consolas', 'Monaco', 'SF Mono', monospace;
+  font-size: $font-size-h2;
+  font-weight: $heading-font-weight;
+  margin: 0;
+  color: $heading-font-color;
+}
+
+// Left content — 无 overflow，页面整体滚动
+.split-left__grid-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.split-right__list-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  padding-top: 0;
+}
+
+// Footer — View all 统一间距 mb-24
+.split-left__footer,
+.split-right__footer {
+  flex-shrink: 0;
+  padding-top: 24px;
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.split-left__link,
+.split-right__link {
+  font-size: 13px;
+  font-weight: 400;
+  color: $text-color;
+  text-decoration: none;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  padding: 8px 16px;
+  border: 1px solid $split-border;
+  border-radius: 8px;
+  background: transparent;
+  transition: border-color $global-transition, color $global-transition;
+
+  &:hover {
+    border-color: darken($split-border, 12%);
+    color: $link-color-hover;
+    text-decoration: none;
+  }
+}
+
+.split-left__link::after,
+.split-right__link::after {
+  content: " →";
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+// ========== Left Panel — 分组吸顶 + grid-cols-2 ==========
+.split-left__category {
+  margin-bottom: 64px; // mb-16 ~ mb-24
+  padding-top: 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  width: 100%;
+
+  &:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
+// 分组标题吸顶：sticky top-0 backdrop-blur
+.split-left__category-name {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(249, 248, 246, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: $base-font-family;
+  font-size: 11px;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+  padding: 12px 0;
+  color: $split-muted;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+// MD 以上强制 grid-cols-2，gap-8，控制整体尺寸
+.split-left__category-row {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 32px; // gap-8
+
+  @media only screen and (min-width: $tablet) {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 520px;
+  }
+}
+
+.split-left__card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 8px;
+  overflow: visible;
+  cursor: pointer;
+  transition: transform $global-transition;
+  background: transparent;
+  max-width: 100%;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// 固定画框：object-contain 完整显示，居中，极浅背景，超细边框
+.split-left__thumb {
+  aspect-ratio: 4 / 5;
+  max-height: 60vh;
+  background-color: #f9f9f9;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  border: 0.5px solid rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.split-left__title {
+  padding: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.3;
+  color: $split-muted;
+}
+
+.split-left__empty {
+  color: $split-muted;
+  font-size: 14px;
+  text-align: center;
+}
+
+// ========== Right Panel — 技术卡片 ==========
+.split-right__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 360px;
+  position: relative;
+  z-index: 1;
+}
+
+.split-right__card {
+  display: block;
+  padding: 24px;
+  background: $split-bg-right;
+  border: 1px solid $split-border;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color $global-transition;
+  width: 100%;
+
+  &:hover {
+    border-color: darken($split-border, 15%);
+  }
+}
+
+.split-right__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: $text-color;
+  font-family: 'Consolas', 'Monaco', 'SF Mono', monospace;
+}
+
+.split-right__desc {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  color: $split-muted;
+}
+
+.split-right__empty {
+  color: $split-muted;
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
