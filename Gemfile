@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 
-# gem "bundler"
-# gem "jekyll"
-# gem "jekyll-paginate"
-# gem 'jekyll-tagging'
-# gem "jekyll-sitemap"
-
-gem "github-pages", group: :jekyll_plugins
+gem "jekyll", "~> 4.3"
+gem "webrick", "~> 1.8"
+gem "jekyll-paginate"
+gem "jekyll-sitemap"
+gem "jekyll-tagging"
